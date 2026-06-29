@@ -86,18 +86,17 @@
     <div class="products-grid" id="fashion-products"></div>
 
     <script>
-        // --- APNE MARJI KE PRODUCTS YAHAN BADLEIN ---
-        // Yahan aap apni dresses ke real image links aur affiliate links paste kar sakte hain
+        // --- APNE REAL LINKS YAHAN PASTE KAREIN ---
         const products = [
             {
-                name: "Floral Summer Maroon Dress",
-                image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=500", 
-                price: "₹1,299",
-                affiliateLink: "https://your-affiliate-link-1.com" 
+                name: "rythas women cotten printed for summer",
+                image: "https://amzn.in/d/0i09i7f7", 
+                price: "₹659",
+                affiliateLink: "https://amzn.to/3QL0o96" 
             }, 
             {
                 name: "rythas women cotten printed for summer",
-                image: "https://amzn.in/d/0b57G,
+                image: "https://amzn.in/d/0i09i7f7", // Yeh temporary sahi image hai, baad me aap change kar sakte hain
                 price: "₹659",
                 affiliateLink: "https://amzn.to/3QL0o96"
             }
@@ -105,17 +104,19 @@
 
         // Yeh code products ko screen par design ke sath dikhayega
         const productsContainer = document.getElementById('fashion-products');
-        products.forEach(product => {
-            const cardHTML = `
-                <div class="product-card">
-                    <img src="${product.image}" alt="${product.name}">
-                    <h3>${product.name}</h3>
-                    <p class="price">${product.price}</p>
-                    <a href="${product.affiliateLink}" target="_blank" class="buy-btn">Check on Store</a>
-                </div>
-            `;
-            productsContainer.innerHTML += cardHTML;
-        });
+        if (productsContainer) {
+            products.forEach(product => {
+                const cardHTML = `
+                    <div class="product-card">
+                        <img src="${product.image}" alt="${product.name}">
+                        <h3>${product.name}</h3>
+                        <p class="price">${product.price}</p>
+                        <a href="${product.affiliateLink}" target="_blank" class="buy-btn">Check on Store</a>
+                    </div>
+                `;
+                productsContainer.innerHTML += cardHTML;
+            });
+        }
     </script>
 
 </body>
