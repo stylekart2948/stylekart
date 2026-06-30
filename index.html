@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+
+    <!DOCTYPE html>
 <html lang="hi">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <title>StyleKart — India's Fashion Destination</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
@@ -22,7 +23,7 @@
     --white:   #FFFFFF;
   }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
 
   body {
     font-family: 'Inter', sans-serif;
@@ -30,6 +31,8 @@
     background: var(--white);
     font-size: 16px;
     line-height: 1.6;
+    overflow-x: hidden;
+    width: 100%;
   }
 
   /* ── NAV ── */
@@ -42,6 +45,7 @@
     justify-content: space-between;
     padding: 0 5%;
     height: 64px;
+    width: 100%;
   }
   .logo {
     display: flex; align-items: center; gap: 10px;
@@ -59,7 +63,7 @@
     font-size: 18px;
   }
 
-  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
   .nav-links a {
     font-size: 14px; font-weight: 500;
     color: var(--muted); text-decoration: none;
@@ -82,10 +86,11 @@
   .hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 88vh;
+    min-height: 85vh;
     align-items: center;
+    width: 100%;
   }
-  .hero-left { padding: 80px 6% 80px 8%; }
+  .hero-left { padding: 60px 5% 60px 8%; }
 
   .eyebrow {
     font-size: 12px; font-weight: 600;
@@ -102,7 +107,7 @@
 
   h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
     font-weight: 700;
     line-height: 1.2;
     color: var(--text);
@@ -112,10 +117,10 @@
 
   .hero-desc {
     font-size: 16px; color: var(--muted);
-    max-width: 420px; margin-bottom: 36px;
+    max-width: 450px; margin-bottom: 36px;
     line-height: 1.75;
   }
-  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
 
   .btn-primary {
     background: var(--pink);
@@ -142,7 +147,7 @@
   .btn-outline:hover { background: var(--pink-lt); }
 
   .hero-stats {
-    display: flex; gap: 32px; margin-top: 48px;
+    display: flex; gap: 32px;
     padding-top: 32px;
     border-top: 1px solid var(--border);
   }
@@ -157,50 +162,31 @@
   .hero-right {
     background: var(--pink);
     height: 100%;
-    min-height: 88vh;
+    min-height: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 60px 8%;
+    padding: 40px 5%;
     position: relative;
     overflow: hidden;
   }
   .hero-right::before {
-    content: '';
-    position: absolute;
-    width: 380px; height: 380px;
-    border-radius: 50%;
-    background: rgba(255,255,255,.06);
-    top: -80px; right: -80px;
-  }
-  .hero-right::after {
-    content: '';
-    position: absolute;
-    width: 240px; height: 240px;
-    border-radius: 50%;
-    background: rgba(255,255,255,.04);
-    bottom: 40px; left: -60px;
+    content: ''; position: absolute; width: 380px; height: 380px;
+    border-radius: 50%; background: rgba(255,255,255,.06); top: -80px; right: -80px;
   }
 
   /* Featured product card */
   .featured-card {
     background: white;
     border-radius: 16px;
-    padding: 0;
     width: 100%; max-width: 320px;
     position: relative; z-index: 1;
     box-shadow: 0 24px 60px rgba(0,0,0,.2);
     overflow: hidden;
   }
-  .featured-img {
-    height: 220px;
-    overflow: hidden;
-    position: relative;
-  }
-  .featured-img img {
-    width: 100%; height: 100%; object-fit: cover;
-  }
+  .featured-img { height: 240px; overflow: hidden; position: relative; background: var(--pink-lt); }
+  .featured-img img { width: 100%; height: 100%; object-fit: cover; }
   .sale-badge {
     position: absolute; top: 12px; left: 12px;
     background: var(--pink); color: white;
@@ -211,14 +197,14 @@
 
   .featured-info { padding: 20px; }
   .featured-brand { font-size: 11px; font-weight: 600; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 4px; }
-  .featured-name { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+  .featured-name { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.4; }
   .featured-price { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
   .f-price-now { font-size: 20px; font-weight: 700; color: var(--pink); }
   .f-price-old { font-size: 14px; color: var(--muted); text-decoration: line-through; }
   .f-price-off { font-size: 12px; font-weight: 600; color: #2E7D32; background: #E8F5E9; padding: 2px 8px; border-radius: 10px; }
   
   .f-buy-btn {
-    display: block; width: 100%; padding: 11px; text-align: center;
+    display: block; width: 100%; padding: 12px; text-align: center;
     background: var(--pink); color: white; text-decoration: none;
     border-radius: 8px; font-size: 14px; font-weight: 600;
     transition: background .2s;
@@ -228,7 +214,7 @@
   .affiliate-badge {
     background: var(--gold); border-radius: 12px;
     padding: 16px 22px; width: 100%; max-width: 320px;
-    margin-top: 14px; position: relative; z-index: 1;
+    margin-top: 20px; position: relative; z-index: 1;
     display: flex; align-items: center; gap: 12px;
   }
   .affiliate-badge span { font-size: 22px; }
@@ -237,25 +223,25 @@
   .affiliate-badge .af-val { font-size: 14px; font-weight: 700; }
 
   /* ── SECTIONS ── */
-  .section { padding: 80px 8%; }
+  .section { padding: 80px 5%; width: 100%; }
   .section.alt { background: var(--off); }
 
-  .section-head { text-align: center; margin-bottom: 52px; }
+  .section-head { text-align: center; margin-bottom: 52px; padding: 0 10px; }
   .section-head h2 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 600; color: var(--text);
-    margin-bottom: 12px;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 600; color: var(--text); margin-bottom: 12px;
   }
   .section-head p { color: var(--muted); max-width: 480px; margin: 0 auto; }
 
   /* ── DYNAMIC PRODUCT GRID ── */
   .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
   }
   .p-card {
     background: white;
@@ -265,37 +251,28 @@
     transition: box-shadow .2s, transform .2s;
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
   .p-card:hover { box-shadow: 0 8px 28px rgba(194,24,91,.12); transform: translateY(-3px); }
-  .p-card-img {
-    height: 250px;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    background: var(--pink-lt);
-  }
-  .p-card-img img {
-    width: 100%; height: 100%; object-fit: cover;
-  }
+  .p-card-img { height: 280px; width: 100%; overflow: hidden; position: relative; background: var(--pink-lt); }
+  .p-card-img img { width: 100%; height: 100%; object-fit: cover; }
   .p-badge {
-    position: absolute; top: 10px; left: 10px;
-    font-size: 10px; font-weight: 700;
-    padding: 3px 8px; border-radius: 20px;
-    letter-spacing: .04em; background: var(--pink); color: white;
+    position: absolute; top: 10px; left: 10px; font-size: 10px; font-weight: 700;
+    padding: 3px 8px; border-radius: 20px; letter-spacing: .04em; background: var(--pink); color: white;
   }
 
-  .p-card-body { padding: 16px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-  .p-card-brand { font-size: 10px; font-weight: 600; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 4px; }
-  .p-card-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.4; }
-  .p-card-price { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
-  .p-now { font-size: 16px; font-weight: 700; color: var(--pink); }
-  .p-old { font-size: 12px; color: var(--muted); text-decoration: line-through; }
-  .p-disc { font-size: 11px; font-weight: 600; color: #2E7D32; }
+  .p-card-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+  .p-card-brand { font-size: 11px; font-weight: 600; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 6px; }
+  .p-card-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 12px; line-height: 1.4; min-height: 42px; }
+  .p-card-price { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .p-now { font-size: 18px; font-weight: 700; color: var(--pink); }
+  .p-old { font-size: 14px; color: var(--muted); text-decoration: line-through; }
+  .p-disc { font-size: 12px; font-weight: 600; color: #2E7D32; }
   
   .p-buy {
-    display: block; width: 100%; padding: 10px; text-align: center;
+    display: block; width: 100%; padding: 12px; text-align: center;
     background: var(--pink-lt); color: var(--pink); text-decoration: none;
-    border: 1px solid var(--border); border-radius: 7px; font-size: 13px; font-weight: 600;
+    border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-weight: 600;
     transition: all .2s; cursor: pointer;
   }
   .p-buy:hover { background: var(--pink); color: white; }
@@ -303,8 +280,11 @@
   /* ── CATEGORIES ── */
   .cat-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
   }
   .cat-item {
     background: white; border: 1px solid var(--border); border-radius: 12px;
@@ -318,25 +298,21 @@
 
   /* ── HOW IT WORKS ── */
   .how-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 24px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; width: 100%;
   }
-  .how-item { text-align: center; }
+  .how-item { text-align: center; padding: 10px; }
   .how-num {
     width: 52px; height: 52px; border-radius: 50%; background: var(--pink-lt);
     display: flex; align-items: center; justify-content: center;
     font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--pink);
     margin: 0 auto 16px;
   }
-  .how-item h4 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
-  .how-item p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .how-item h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .how-item p { font-size: 14px; color: var(--muted); line-height: 1.6; }
 
   /* ── REVIEWS ── */
   .testi-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto; width: 100%;
   }
   .testi-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
   .stars { color: var(--gold); font-size: 14px; margin-bottom: 12px; }
@@ -349,28 +325,28 @@
   .author-name { font-size: 14px; font-weight: 600; }
   .author-loc { font-size: 12px; color: var(--muted); }
 
-  /* ── NEWSLETTER / CTA BANNER ── */
+  /* ── WHATSAPP BANNER ── */
   .cta-banner {
-    background: var(--pink); border-radius: 20px; padding: 52px 8%; text-align: center; position: relative; overflow: hidden;
+    background: var(--pink); border-radius: 20px; padding: 50px 5%; text-align: center; position: relative; overflow: hidden; max-width: 1200px; margin: 0 auto; width: 100%;
   }
   .cta-banner::before {
     content: ''; position: absolute; width: 300px; height: 300px; border-radius: 50%;
     background: rgba(255,255,255,.07); top: -80px; right: -60px;
   }
-  .cta-banner h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2rem); font-weight: 600; color: white; margin-bottom: 12px; }
-  .cta-banner p { color: rgba(255,255,255,.8); margin-bottom: 28px; font-size: 15px; }
-  .cta-row { display: flex; gap: 10px; max-width: 440px; margin: 0 auto; }
-  .cta-row input { flex: 1; padding: 12px 16px; border-radius: 8px; border: none; font-size: 14px; outline: none; }
+  .cta-banner h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 600; color: white; margin-bottom: 12px; position: relative; z-index: 1; }
+  .cta-banner p { color: rgba(255,255,255,.8); margin-bottom: 28px; font-size: 15px; position: relative; z-index: 1; }
+  .cta-row { display: flex; gap: 12px; max-width: 500px; margin: 0 auto; position: relative; z-index: 1; width: 100%; }
+  .cta-row input { flex: 1; padding: 14px 16px; border-radius: 8px; border: none; font-size: 15px; outline: none; width: 100%; }
   .cta-row button {
-    background: var(--gold); color: white; border: none; padding: 12px 22px; border-radius: 8px;
-    font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: opacity .2s;
+    background: var(--gold); color: white; border: none; padding: 14px 28px; border-radius: 8px;
+    font-size: 15px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: background .2s;
   }
-  .cta-row button:hover { opacity: .9; }
+  .cta-row button:hover { background: #966F03; }
 
   /* ── FOOTER ── */
   footer {
-    background: var(--dark); color: rgba(255,255,255,.7); padding: 40px 8%;
-    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+    background: var(--dark); color: rgba(255,255,255,.7); padding: 40px 5%;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; width: 100%;
   }
   .footer-logo { font-family: 'Playfair Display', serif; font-size: 18px; color: white; font-weight: 700; }
   .footer-note { font-size: 13px; }
@@ -378,18 +354,33 @@
   .footer-links a { color: rgba(255,255,255,.7); text-decoration: none; font-size: 13px; }
   .footer-links a:hover { color: white; }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768_px) {
-    .hero { grid-template-columns: 1fr; }
-    .hero-right { min-height: 50vh; }
+  /* ── FIXED MOBILE RESPONSIVE BUG ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 4%; }
     .nav-links { display: none; }
-    .hero-left { padding: 60px 6%; }
-    .cta-row { flex-direction: column; }
+    
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 40px 4%; text-align: center; display: flex; flex-direction: column; align-items: center; }
+    .hero-desc { margin-left: auto; margin-right: auto; }
+    .hero-btns { justify-content: center; width: 100%; }
+    .hero-stats { justify-content: center; width: 100%; gap: 20px; }
+    .stat-num { font-size: 24px; }
+    
+    .hero-right { min-height: 480px; padding: 40px 4%; }
+    
+    .products-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 0 10px; }
+    .p-card-img { height: 250px; }
+    
+    .cta-row { flex-direction: column; gap: 10px; }
+    .cta-row button { width: 100%; }
+    
+    footer { flex-direction: column; text-align: center; gap: 15px; }
   }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a class="logo" href="#">
     <div class="logo-icon">👗</div>
@@ -403,6 +394,7 @@
   </ul>
 </nav>
 
+<!-- HERO SECTION -->
 <section class="hero" id="home">
   <div class="hero-left">
     <div class="eyebrow">India's #1 Fashion Deal Finder</div>
@@ -428,6 +420,7 @@
     </div>
   </div>
 
+  <!-- Hero Right: Top Banner Featured Product -->
   <div class="hero-right">
     <div class="featured-card">
       <div class="featured-img">
@@ -455,6 +448,7 @@
   </div>
 </section>
 
+<!-- CATEGORIES -->
 <section class="section alt" id="categories">
   <div class="section-head">
     <h2>Shop by Category</h2>
@@ -472,6 +466,7 @@
   </div>
 </section>
 
+<!-- TRENDING PRODUCTS SECTION -->
 <section class="section" id="trending">
   <div class="section-head">
     <h2>🔥 Aaj ke Top Deals</h2>
@@ -481,6 +476,7 @@
   <div class="products-grid" id="fashion-products"></div>
 </section>
 
+<!-- HOW IT WORKS -->
 <section class="section alt">
   <div class="section-head">
     <h2>Kaise Kaam Karta Hai?</h2>
@@ -494,6 +490,7 @@
   </div>
 </section>
 
+<!-- REVIEWS -->
 <section class="section" id="reviews">
   <div class="section-head">
     <h2>Shoppers Kya Kehti Hain</h2>
@@ -517,6 +514,7 @@
   </div>
 </section>
 
+<!-- NEWSLETTER / WHATSAPP BANNER -->
 <section class="section" id="newsletter">
   <div class="cta-banner">
     <h2>Daily Deals Directly on WhatsApp 📲</h2>
@@ -528,6 +526,7 @@
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-logo">StyleKart 👗</div>
   <div class="footer-note">© 2026 StyleKart · Affiliate links se support karo · No extra charge</div>
@@ -538,8 +537,6 @@
     // =============================================================
     // 👗 APNI MARJI SE DAILY PRODUCTS YAHAN PAR BADLEIN 👗
     // =============================================================
-    // Aap jitne chahein utne blocks {} bana sakte hain, bas beech me comma (,) lagana hai.
-    
     const products = [
         {
             brand: "Amazon Fashion",
@@ -551,7 +548,7 @@
             affiliateLink: "https://your-affiliate-link-1.com" 
         }, 
         {
-            brand: "Myntra / Amazon",
+            brand: "Amazon India",
             name: "Rythas Women Cotton Printed for Summer",
             image: "https://images.unsplash.com/photo-1544441893-675973e31985?w=500",
             price: "₹659",
@@ -570,11 +567,7 @@
         }
     ];
 
-    // =============================================================
-    // AUTOMATIC SYSTEM (ISE CHHEDNE KI ZARURAT NAHI HAI)
-    // =============================================================
-    
-    // 1. Pehle product ko automatic Top-Hero Banner par update karne ke liye
+    // AUTOMATIC LOADER
     if (products.length > 0) {
         document.getElementById('main-product-brand').innerText = products[0].brand;
         document.getElementById('main-product-name').innerText = products[0].name;
@@ -583,7 +576,6 @@
         document.getElementById('main-product-link').href = products[0].affiliateLink;
     }
 
-    // 2. Saare products ko card structure me loop karke screen par dikhane ke liye
     const productsContainer = document.getElementById('fashion-products');
     if (productsContainer) {
         products.forEach(product => {
@@ -616,3 +608,5 @@
 
 </body>
 </html>
+
+  
