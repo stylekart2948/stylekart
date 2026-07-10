@@ -540,64 +540,71 @@
 <script>
   // ── PRODUCT DATA (yahan apne naye products add/edit kar sakte ho) ──
   const products = [
-    {
+   {
       brand: "Amazon Fashion",
-      name: "Pista women kurta",
+      name: "Pista Women Kurta",
       image: "81PbkVwt7hL._SY879_ (1).jpg",
       price: "775",
-      oldprice:"1799",
-      link: "https://link.amazon/B09SkpN0n",
+      oldPrice: "1799",
+      discount: "57% OFF",
+      link: "https://link.amazon/B09SkpNOn",
       category: "ethnic-wear",
-      bagde: "SALE"
+      badge: "SALE"
     },
     {
       brand: "Amazon Fashion",
-      name:"rytras women cotton kurta ",
+      name: "Rytras Women Cotton Kurta",
       image: "61r67q9q9FL._SY879_.jpg",
       price: "659",
+      oldPrice: "2999",
+      discount: "78% OFF",
       link: "https://link.amazon/B0id6kuyg",
-      oldprice:"2999",
-      category: "dresses"
-      badge:"🔥 HOT"
+      category: "dresses",
+      badge: "🔥 HOT"
     },
     {
       brand: "Amazon Fashion",
-      name: "women printed cotton kurta",
+      name: "Women Printed Cotton Kurta",
       image: "71DmAdcf7zL._SY879_.jpg",
       price: "454",
+      oldPrice: "1199",
+      discount: "62% OFF",
       link: "https://link.amazon/B0hcYW8Co",
-      oldprice:"1199",
-      category: "dresses"
-      badge:"TRENDING"
+      category: "dresses",
+      badge: "TRENDING"
     },
     {
       brand: "Amazon Fashion",
-      name: "campus men shoes",
+      name: "Campus Men Shoes",
       image: "71RiFU3KvLL._SY695_.jpg",
       price: "1179",
+      oldPrice: "1899",
+      discount: "38% OFF",
       link: "https://link.amazon/B0hVaDTLK",
-      oldprice:"1899",
-      categary: "footwear"
-      bagde:"BESTSELLER"
+      category: "footwear",
+      badge: "BESTSELLER"
     },
     {
       brand: "Amazon Fashion",
-      name: "campus men flying fury running shoes",
+      name: "Campus Men Flying Fury Running Shoes",
       image: "61oJ2NBV8fL._SY695_.jpg",
-      price: "949, oldPrice: 1699, discount: "-44% OFF",
+      price: "949",
+      oldPrice: "1699",
+      discount: "44% OFF",
       link: "https://link.amazon/B0h9oyxDq",
-      categary: "footwear"
-      badge:"DEAL"
+      category: "footwear",
+      badge: "DEAL"
     },
     {
       brand: "Amazon Fashion",
-      name: "t shirt for half sleeve",
+      name: "T-Shirt for Half Sleeve",
       image: "IMG_20260710_120238.jpg",
       price: "395",
-      discount: "limited time deal",
+      oldPrice: "null",
+      discount: "Limited Time Deal",
       link: "https://link.amazon/B0dIcoXdZ",
-      category: "mens-wear"
-      badge:"🔥 HOT"
+      category: "mens-wear",
+      badge: "🔥 HOT"
     }
   ];
 
@@ -607,7 +614,7 @@
     grid.innerHTML = products.map(p => `
       <div class="p-card">
         <div class="p-card-img">
-          <img src="${p.img}" alt="${p.name}" loading="lazy">
+          <img src="${p.image}" alt="${p.name}" loading="lazy">
           <div class="p-badge">${p.badge}</div>
         </div>
         <div class="p-card-body">
@@ -618,7 +625,7 @@
           <div>
             <div class="p-card-price">
               <span class="p-now">₹${p.price.toLocaleString('en-IN')}</span>
-              <span class="p-old">₹${p.oldPrice.toLocaleString('en-IN')}</span>
+              ${p.oldPrice ? `<span class="p-old">₹${p.oldPrice.toLocaleString('en-IN')}</span>` : ''}
               <span class="p-disc">${p.discount}</span>
             </div>
             <a href="${p.link}" target="_blank" rel="noopener" class="p-buy">Buy Now →</a>
@@ -627,9 +634,7 @@
       </div>
     `).join('');
   }
-
-  // ── NEWSLETTER FORM (abhi demo — baad mein apna backend/Google Form jod dena) ──
-  const form = document.getElementById('newsletter-form');
+ const form = document.getElementById('newsletter-form');
   const msg = document.getElementById('newsletter-msg');
   if (form) {
     form.addEventListener('submit', function (e) {
@@ -647,4 +652,4 @@
 </script>
 
 </body>
-</html>
+</html>       
