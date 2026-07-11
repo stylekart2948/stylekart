@@ -1,4 +1,320 @@
 
-      
+      <!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>StyleKart — Category</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --pink:    #C2185B;
+    --pink-lt: #FCE4EC;
+    --pink-md: #D81B60;
+    --gold:    #B8860B;
+    --dark:    #1A1218;
+    --off:     #FDF8FA;
+    --text:    #1A1218;
+    --muted:   #6B5B65;
+    --border:  #EDD5E0;
+    --white:   #FFFFFF;
+  }
+
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    height: 64px;
+    width: 100%;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--pink);
+    text-decoration: none;
+  }
+  .logo-icon {
+    width: 36px; height: 36px;
+    background: var(--pink);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .back-link {
+    font-size: 14px; font-weight: 600;
+    color: var(--pink); text-decoration: none;
+    display: flex; align-items: center; gap: 6px;
+  }
+
+  .page-head {
+    padding: 50px 5% 30px;
+    text-align: center;
+    background: var(--off);
+  }
+  .page-head h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .page-head p { color: var(--muted); font-size: 15px; }
+
+  .section { padding: 50px 5% 80px; width: 100%; }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .p-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: box-shadow .2s, transform .2s;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .p-card:hover { box-shadow: 0 8px 28px rgba(194,24,91,.12); transform: translateY(-3px); }
+  .p-card-img { height: 280px; width: 100%; overflow: hidden; position: relative; background: var(--pink-lt); }
+  .p-card-img img { width: 100%; height: 100%; object-fit: cover; }
+  .p-badge {
+    position: absolute; top: 10px; left: 10px; font-size: 10px; font-weight: 700;
+    padding: 3px 8px; border-radius: 20px; letter-spacing: .04em; background: var(--pink); color: white;
+  }
+
+  .p-card-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+  .p-card-brand { font-size: 11px; font-weight: 600; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 6px; }
+  .p-card-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 12px; line-height: 1.4; min-height: 42px; }
+  .p-card-price { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+  .p-now { font-size: 18px; font-weight: 700; color: var(--pink); }
+  .p-old { font-size: 14px; color: var(--muted); text-decoration: line-through; }
+  .p-disc { font-size: 12px; font-weight: 600; color: #2E7D32; }
+
+  .p-buy {
+    display: block; width: 100%; padding: 12px; text-align: center;
+    background: var(--pink-lt); color: var(--pink); text-decoration: none;
+    border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-weight: 600;
+    transition: all .2s; cursor: pointer;
+  }
+  .p-buy:hover { background: var(--pink); color: white; }
+
+  .empty-state {
+    text-align: center; padding: 60px 20px; color: var(--muted);
+    max-width: 500px; margin: 0 auto;
+  }
+  .empty-state h3 { font-family: 'Playfair Display', serif; color: var(--text); margin-bottom: 10px; font-size: 22px; }
+
+  footer {
+    background: var(--dark); color: rgba(255,255,255,.7); padding: 40px 5%;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; width: 100%;
+  }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 18px; color: white; font-weight: 700; }
+  .footer-note { font-size: 13px; }
+
+  @media (max-width: 768px) {
+    .products-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .p-card-img { height: 250px; }
+    footer { flex-direction: column; text-align: center; gap: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">
+    <div class="logo-icon">👗</div>
+    StyleKart
+  </a>
+  <a class="back-link" href="index.html">← Home</a>
+</nav>
+
+<div class="page-head">
+  <h1 id="category-title">Category</h1>
+  <p id="category-desc">Best deals curated for you</p>
+</div>
+
+<section class="section">
+  <div class="products-grid" id="fashion-products"></div>
+</section>
+
+<footer>
+  <div class="footer-logo">StyleKart</div>
+  <div class="footer-note">© 2026 StyleKart. Sabhi affiliate links via Amazon, Myntra, Ajio partner programs.</div>
+</footer>
+
+<script>
+  try {
+    // ── SAME PRODUCT DATA AS index.html ──
+    // Naya product add karna ho to yahan aur index.html dono jagah add karna
+    const products = [
+      {
+        brand: "Amazon Fashion",
+        name: "Pista Women Kurta",
+        image: "81PbkVwt7hL._SY879_ (1).jpg",
+        price: 775,
+        oldPrice: 1799,
+        discount: "57% OFF",
+        link: "https://link.amazon/B09SkpNOn",
+        category: "ethnic-wear",
+        badge: "SALE"
+      },
+      {
+        brand: "Amazon Fashion",
+        name: "Rytras Women Cotton Kurta",
+        image: "61r67q9q9FL._SY879_.jpg",
+        price: 659,
+        oldPrice: 2999,
+        discount: "78% OFF",
+        link: "https://link.amazon/B0id6kuyg",
+        category: "dresses",
+        badge: "🔥 HOT"
+      },
+      {
+        brand: "Amazon Fashion",
+        name: "Women Printed Cotton Kurta",
+        image: "71DmAdcf7zL._SY879_.jpg",
+        price: 454,
+        oldPrice: 1199,
+        discount: "62% OFF",
+        link: "https://link.amazon/B0hcYW8Co",
+        category: "dresses",
+        badge: "TRENDING"
+      },
+      {
+        brand: "Amazon Fashion",
+        name: "Campus Men Shoes",
+        image: "71RiFU3KvLL._SY695_.jpg",
+        price: 1179,
+        oldPrice: 1899,
+        discount: "38% OFF",
+        link: "https://link.amazon/B0hVaDTLK",
+        category: "footwear",
+        badge: "BESTSELLER"
+      },
+      {
+        brand: "Amazon Fashion",
+        name: "Campus Men Flying Fury Running Shoes",
+        image: "61oJ2NBV8fL._SY695_.jpg",
+        price: 949,
+        oldPrice: 1699,
+        discount: "44% OFF",
+        link: "https://link.amazon/B0h9oyxDq",
+        category: "footwear",
+        badge: "DEAL"
+      },
+      {
+        brand: "Amazon Fashion",
+        name: "T-Shirt for Half Sleeve",
+        image: "IMG_20260710_120238.jpg",
+        price: 395,
+        oldPrice: null,
+        discount: "Limited Time Deal",
+        link: "https://link.amazon/B0dIcoXdZ",
+        category: "mens-wear",
+        badge: "🔥 HOT"
+      }
+    ];
+
+    // Category ke naam pretty dikhane ke liye
+    const categoryLabels = {
+      "dresses": "Dresses",
+      "footwear": "Footwear",
+      "handbags": "Handbags",
+      "jewellery": "Jewellery",
+      "mens-wear": "Men's Wear",
+      "winter-wear": "Winter Wear",
+      "beauty": "Beauty",
+      "ethnic-wear": "Ethnic Wear"
+    };
+
+    // URL se category padho: category.html?cat=dresses
+    const params = new URLSearchParams(window.location.search);
+    const selectedCategory = (params.get('cat') || '').toLowerCase().trim();
+
+    // Heading update karo
+    const titleEl = document.getElementById('category-title');
+    const descEl = document.getElementById('category-desc');
+    const prettyName = categoryLabels[selectedCategory] || 'All Products';
+    titleEl.textContent = prettyName;
+    descEl.textContent = 'Best ' + prettyName + ' deals curated for you';
+
+    // Filter karo
+    const filtered = selectedCategory
+      ? products.filter(function(p) { return p.category === selectedCategory; })
+      : products;
+
+    function renderProducts(list) {
+      const grid = document.getElementById('fashion-products');
+      if (!grid) return;
+
+      if (list.length === 0) {
+        grid.innerHTML = '<div class="empty-state"><h3>Koi product nahi mila</h3><p>Is category mein abhi deals available nahi hain. Jaldi hi naye products add honge!</p></div>';
+        return;
+      }
+
+      grid.innerHTML = list.map(function(p) {
+        var oldPriceHtml = '';
+        if (p.oldPrice) {
+          oldPriceHtml = '<span class="p-old">₹' + p.oldPrice.toLocaleString('en-IN') + '</span>';
+        }
+        return '<div class="p-card">' +
+          '<div class="p-card-img">' +
+            '<img src="' + p.image + '" alt="' + p.name + '" loading="lazy">' +
+            '<div class="p-badge">' + p.badge + '</div>' +
+          '</div>' +
+          '<div class="p-card-body">' +
+            '<div>' +
+              '<div class="p-card-brand">' + p.brand + '</div>' +
+              '<div class="p-card-name">' + p.name + '</div>' +
+            '</div>' +
+            '<div>' +
+              '<div class="p-card-price">' +
+                '<span class="p-now">₹' + p.price.toLocaleString('en-IN') + '</span>' +
+                oldPriceHtml +
+                '<span class="p-disc">' + p.discount + '</span>' +
+              '</div>' +
+              '<a href="' + p.link + '" target="_blank" rel="noopener" class="p-buy">Buy Now →</a>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
+
+    renderProducts(filtered);
+
+  } catch (err) {
+    const grid = document.getElementById('fashion-products');
+    if (grid) {
+      grid.innerHTML = '<div style="color:red; font-weight:bold; padding:20px; background:#fff0f0; border:2px solid red; border-radius:8px;">JS ERROR: ' + err.message + '</div>';
+    }
+  }
+</script>
+
+</body>
+</html>
 
   
